@@ -31,34 +31,36 @@ You need an Apache with PHP 5+ support and Node.js.
 3. Install Glue (http://glue.readthedocs.org/en/latest/installation.html)
 4. Unzip https://github.com/smollweide/terrific-micro-grunt/archive/master.zip in your project root
 5. Navigate into project root
-6. Run "npm install"
-7. Run "grunt"
+6. Run ```npm install```
+7. Run ```grunt```
 8. Start working
 
 Use grunt
 =========
 
-* run "grunt" for generating the base files, generating the tests and starting the watch task
-* run "grunt build" for generating the base files and the tests
-* run "grunt sprites" for generating the sprite images
-* run "grunt tests" for generating the tests
-* run "grunt jshint" for hinting
-* run "grunt search" for searching the strings "alert, console, TODO, debug, fixme" in you project
-* run "grunt yuidoc" for generating the javascript documentation
-* run "grunt complexity" for calculating the halstead and cyclomatic of you code
+* run ```grunt``` for generating the base files, generating the tests and starting the watch task
+* run ```grunt build``` for generating the base files and the tests
+* run ```grunt sprites``` for generating the sprite images
+* run ```grunt tests``` for generating the tests
+* run ```grunt jshint``` for hinting
+* run ```grunt search``` for searching the strings "alert, console, TODO, debug, fixme" in you project
+* run ```grunt yuidoc``` for generating the javascript documentation
+* run ```grunt complexity``` for calculating the halstead and cyclomatic of you code
 
 Module Generator
 ================
 
-1. Run "sh generate-module.sh Example"
+1. Run ```sh generate-module.sh Example```
 2. The new module are created with the following structure in the "modules" folder.
 
-- /Example
-- /Example/example.html
-- /Example/css/example.css
-- /Example/js/example.js
-- /Example/tests/example.tests.js
-- /Example/tests/example.tests.html
+```
+/Example
+/Example/example.html
+/Example/css/example.css
+/Example/js/example.js
+/Example/tests/example.tests.js
+/Example/tests/example.tests.html
+```
 
 Creating pages
 ==============
@@ -86,7 +88,7 @@ Includes
 Important
 =========
 
-- Run "grunt" every time you start working
+- Run ```grunt``` every time you start working
 - The minified files will be created while running "grunt" or "grunt build"
 - The concatenated files will be created after running "grunt" every time you change something (watch task)
 - Read the grunt documentation for more details (http://gruntjs.com/)
