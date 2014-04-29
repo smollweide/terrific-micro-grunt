@@ -1,0 +1,30 @@
+{
+	"name": "terrificMicroGrunt",
+	"title": "TerrificMicroGrunt",
+	"homepage": "https://github.com/smollweide/terrific-micro-grunt",
+	"version": "1.0.0",
+		"repository" : {
+			"type" : "git",
+			"url" : "https://github.com/smollweide/terrific-micro-grunt.git"
+		},
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-jshint": "~0.6.0",
+		"grunt-contrib-concat": "~0.3.0",
+		"grunt-less-imports": "~0.8.6",
+		"grunt-contrib-less": "~0.6.4",
+		"grunt-contrib-cssmin": "~0.6.1",
+		"grunt-contrib-uglify": "~0.2.7",
+		"grunt-contrib-watch": "~0.5.1",
+		"grunt-contrib-copy": "~0.4.1",
+		"grunt-contrib-clean": "~0.5.0",
+		"grunt-rename": "~0.1.2",
+		"grunt-contrib-yuidoc": "~0.5.0",
+		"grunt-search": "~0.1.3",
+		"load-grunt-tasks": "~0.3.0",
+		"grunt-glue-nu": "~0.3.1"
+	},
+	"dependencies": {
+	  "grunt-complexity": "~0.1.6"
+	}
+}
