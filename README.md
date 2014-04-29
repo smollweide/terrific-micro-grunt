@@ -18,6 +18,7 @@ Features
 * String Search
 * Complexity calculation
 * YUIDoc JavaScript Documentation (http://localhost/yourproject/cache/jsdoc)
+* Live reload (Browser plugin required: https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
 
 Installation & Requirements
@@ -112,6 +113,7 @@ References
 - grunt-contrib-watch -> https://github.com/gruntjs/grunt-contrib-watch
 - grunt-contrib-copy -> https://github.com/gruntjs/grunt-contrib-copy
 - grunt-contrib-clean -> https://github.com/gruntjs/grunt-contrib-clean
+- grunt-contrib-livereload -> https://github.com/gruntjs/grunt-contrib-livereload
 - grunt-rename -> https://www.npmjs.org/package/grunt-rename
 - load-grunt-tasks -> https://github.com/sindresorhus/load-grunt-tasks
 - grunt-complexity -> https://github.com/vigetlabs/grunt-complexity

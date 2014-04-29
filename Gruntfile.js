@@ -62,6 +62,8 @@ module.exports = function(grunt) {
 			modules: 'modules',
 			cache: 'cache',
 			tests: 'tests',
+			views: 'views',
+			partials: 'views/partials',
 			gruntLog: '<%=dirs.cache%>/gruntLog',
 
 			////////////////////////////////////////////////////////////////////////////
@@ -144,6 +146,14 @@ module.exports = function(grunt) {
 				'<%=dirs.assets%>/js/*/tests/*.html',
 				'<%=dirs.modules%>/*/tests/*.html',
 				'<%=dirs.tests%>/tests.end.html'
+			],
+
+			////////////////////////////////////////////////////////////////////////////
+			// Markup
+			markup: [
+				'<%=dirs.modules%>/*/*.html',
+				'<%=dirs.views%>/*.html',
+				'<%=dirs.partials%>/*.html'
 			]
 		},
 
@@ -254,6 +264,12 @@ module.exports = function(grunt) {
 			gruntfile: {
 				files: 'Gruntfile.js',
 				tasks: ['build-scripts-fast', 'build-styles-fast', 'build-tests'],
+				options: {
+					livereload: true
+				}
+			},
+			markup: {
+				files: ['<%=dirs.markup%>'],
 				options: {
 					livereload: true
 				}
