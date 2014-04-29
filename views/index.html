@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <?php partial('head', array('title' => 'Terrific Micro Grunt')) ?>
+    </head>
+
+    <body class="mod-layout">
+        <?php module('Header') ?>
+        <?php module('Jumbotron') ?>
+		<div class="container">
+			<div class="row">
+				<?php module('Teaser', 'terrific') ?>
+				<?php module('Teaser', 'grunt') ?>
+				<?php module('Teaser', 'jquery') ?>
+			</div>
+			<div class="row">
+				<?php module('Teaser', 'glue') ?>
+				<?php module('Teaser', 'qunit') ?>
+				<?php module('Teaser', 'yuidoc') ?>
+			</div>
+			<?php module('Footer') ?>
+		</div>
+        <?php partial('foot') ?>
+    </body>
+
+</html>
