@@ -43,7 +43,7 @@ Use grunt
 * run "grunt sprites" for generating the sprite images
 * run "grunt tests" for generating the tests
 * run "grunt jshint" for hinting
-* run "grunt" for searching the strings "alert, console, TODO, debug, fixme" in you project
+* run "grunt search" for searching the strings "alert, console, TODO, debug, fixme" in you project
 * run "grunt yuidoc" for generating the javascript documentation
 * run "grunt complexity" for calculating the halstead and cyclomatic of you code
 
