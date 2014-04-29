@@ -100,24 +100,14 @@ module.exports = function(grunt) {
 			////////////////////////////////////////////////////////////////////////////
 			// Sprites
 			sprites: {
-				default: {
-					src: [
-						'<%=dirs.assets%>/sprites/default/*.png'
-					],
-					output: {
-						img: '<%=dirs.cache%>/media/img/',
-						url: '<%=dirs.cache%>/media/img/',
-						less: '<%=dirs.cache%>'
-					}
-				},
 				retina: {
 					src: [
-						'<%=dirs.assets%>/sprites/retina/*.png'
+						'<%=dirs.assets%>/sprites/*.png'
 					],
 					output: {
 						img: '<%=dirs.cache%>/media/img/',
 						url: '<%=dirs.cache%>/media/img/',
-						less: '<%=dirs.cache%>'
+						less: '<%=dirs.assets%>/css/elements/'
 					}
 				}
 			},
@@ -277,22 +267,9 @@ module.exports = function(grunt) {
 		//
 		////////////////////////////////////////////////////////////////////////////////
 		glue:	{
-			default: {
-				options: {
-					bundleName          : 'sprites-default',
-					less                : '<%=dirs.sprites.default.output.less%>',
-					url                 : '<%=dirs.sprites.default.output.url%>',
-					namespace           : '',
-					'sprite-namespace'  : '',
-					cachebuster         : true,
-					crop				: false
-				},
-				src: '<%=dirs.sprites.default.src%>',
-				dest: '<%=dirs.sprites.default.output.img%>'
-			},
 			retina: {
 				options: {
-					bundleName          : 'sprites-retina',
+					bundleName          : 'sprites',
 					less                : '<%=dirs.sprites.retina.output.less%>',
 					url                 : '<%=dirs.sprites.retina.output.url%>',
 					namespace           : '',
