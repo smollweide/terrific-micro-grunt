@@ -49,15 +49,15 @@ Use grunt
 Module Generator
 ================
 
-1. Run "sh tc-module.sh Example"
+1. Run "sh generate-module.sh Example"
 2. The new module are created with the following structure in the "modules" folder.
 
-    /Example
-    /Example/example.html
-    /Example/css/example.css
-    /Example/js/example.js
-    /Example/tests/example.tests.js
-    /Example/tests/example.tests.html
+    /Example\n
+    /Example/example.html\n
+    /Example/css/example.css\n
+    /Example/js/example.js\n
+    /Example/tests/example.tests.js\n
+    /Example/tests/example.tests.html\n
 
 Creating pages
 ==============
