@@ -12,7 +12,7 @@
 // run "grunt sprites" for generation the sprite images
 // run "grunt tests" for generating the tests
 // run "grunt jshint" for hinting
-// run "grunt search" for searching production strings (alert|console|TODO|debug|fixme) in you project
+// run "grunt search" for searching production strings (alert,console,TODO,debug,fixme) in you project
 // run "grunt yuidoc" for generating the javascript documentation
 // run "grunt complexity" for calculating the halstat and cyliomatic of you code
 
@@ -221,6 +221,9 @@ module.exports = function(grunt) {
 		clean: {
 			less_imports: {
 				src: ['<%=dirs.cache%>/css/temp-styles-imports.less']
+			},
+			triggerfile: {
+				src: ['<%=dirs.cache%>/triggerfile']
 			}
 		},
 
@@ -250,7 +253,10 @@ module.exports = function(grunt) {
 			},
 			gruntfile: {
 				files: 'Gruntfile.js',
-				tasks: ['build-scripts-fast', 'build-styles-fast', 'build-tests']
+				tasks: ['build-scripts-fast', 'build-styles-fast', 'build-tests'],
+				options: {
+					livereload: true
+				}
 			},
 			triggerfile: {
 				files: ['<%=dirs.trigger%>'],
@@ -358,7 +364,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build-styles-fast', [
 		'less_imports',
 		'less',
-		'clean'
+		'clean:less_imports'
 	]);
 	grunt.registerTask('build-styles', [
 		'build-styles-fast',
@@ -385,7 +391,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', [
 		'build-styles',
 		'build-scripts',
-		'build-tests'
+		'build-tests',
+		'clean'
 	]);
 
 	// default
