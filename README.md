@@ -1,7 +1,7 @@
 Terrific Micro Grunt
 ====================
 
-Based on "Terrific Micro" but using "Grunt" for concatenation and minification.
+Based on "Terrific Micro" but uses "Grunt" for concatenation and minification.
 Nearly all features and the framework it self are written by someone else take a look into the caption "References".
 
 THANKS TO ALL DEVELOPERS
