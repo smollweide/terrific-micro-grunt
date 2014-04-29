@@ -1,0 +1,12 @@
+.DS_Store
+.idea/
+*.eml
+*.iml
+!idea/*.iml
+.sonar/
+
+# node
+/node_modules
+
+#cache
+/cache
