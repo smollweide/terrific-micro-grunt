@@ -19,7 +19,7 @@ Features
 * Complexity calculation
 * YUIDoc JavaScript Documentation (http://localhost/yourproject/cache/jsdoc)
 * Live reload (Browser plugin required: https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
-
+* Styleguide based on Bootstrap
 
 Installation & Requirements
 ===========================
