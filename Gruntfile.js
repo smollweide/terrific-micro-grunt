@@ -46,7 +46,8 @@ module.exports = function(grunt) {
 			name: 'Terrific Micro Grunt',
 			description: 'grunt version of Terrific Micro',
 			version: '0.1.0',
-			url: 'https://github.com/smollweide/terrific-micro-grunt'
+			url: 'https://github.com/smollweide/terrific-micro-grunt',
+			devUrl: 'http://github.local/terrific-micro-grunt/'
 		},
 
 		////////////////////////////////////////////////////////////////////////////////
@@ -154,7 +155,67 @@ module.exports = function(grunt) {
 				'<%=dirs.modules%>/*/*.html',
 				'<%=dirs.views%>/*.html',
 				'<%=dirs.partials%>/*.html'
-			]
+			],
+
+			////////////////////////////////////////////////////////////////////////////
+			// Export
+			export: {
+				dir: '<%=dirs.cache%>/exported',
+				param: 'export=true'
+			}
+		},
+
+		////////////////////////////////////////////////////////////////////////////////
+		//
+		// Copy
+		//
+		////////////////////////////////////////////////////////////////////////////////
+		copy: {
+			images: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%=dirs.cache%>/media/img/*'],
+						dest: '<%=dirs.export.dir%>/<%=dirs.cache%>/media/img',
+						filter: 'isFile'
+					}
+				]
+			},
+			css: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%=dirs.cache%>/css/*'],
+						dest: '<%=dirs.export.dir%>/<%=dirs.cache%>/css',
+						filter: 'isFile'
+					}
+				]
+			},
+			js: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%=dirs.cache%>/js/*'],
+						dest: '<%=dirs.export.dir%>/<%=dirs.cache%>/js',
+						filter: 'isFile'
+					}
+				]
+			}
+		},
+
+		////////////////////////////////////////////////////////////////////////////////
+		//
+		// Curl
+		//
+		////////////////////////////////////////////////////////////////////////////////
+		curl: {
+			index: {
+				src: '<%=project.devUrl%>/index.html?<%=dirs.export.param%>',
+				dest: '<%=dirs.export.dir%>/index.html'
+			}
 		},
 
 		////////////////////////////////////////////////////////////////////////////////
@@ -409,6 +470,13 @@ module.exports = function(grunt) {
 		'build-scripts',
 		'build-tests',
 		'clean'
+	]);
+
+	// export
+	grunt.registerTask('export', [
+		'build',
+		'copy',
+		'curl'
 	]);
 
 	// default
