@@ -59,6 +59,7 @@ module.exports = function(grunt) {
 
 			////////////////////////////////////////////////////////////////////////////
 			// BASE
+			resource: 'resource',
 			assets: 'assets',
 			modules: 'modules',
 			cache: 'cache',
@@ -162,6 +163,13 @@ module.exports = function(grunt) {
 			export: {
 				dir: '<%=dirs.cache%>/exported',
 				param: 'export=true'
+			},
+
+			////////////////////////////////////////////////////////////////////////////
+			// Module Generator
+			generator: {
+				src: '<%=dirs.resource%>/module',
+				dest: '<%=dirs.modules%>'
 			}
 		},
 
@@ -419,6 +427,85 @@ module.exports = function(grunt) {
 					maintainability: 100
 				}
 			}
+		},
+
+		////////////////////////////////////////////////////////////////////////////////
+		//
+		// terrific module generator
+		//
+		////////////////////////////////////////////////////////////////////////////////
+		terrific_modules: {
+			options: {
+				placeholder: {
+					module: {
+						underscore: '{module}',
+						camelCase: '{Module}'
+					},
+					skin: {
+						underscore: '{skin}',
+						camelCase: '{Skin}'
+					},
+					template: {
+						underscore: '{template}',
+						camelCase: '{Template}'
+					},
+					author: '{author}'
+				},
+				files: {
+					module: [
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}',
+							template: '{module}.html'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}',
+							template: '{module}.readme.md'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/js',
+							template: '{module}.js'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/css',
+							template: '{module}.less'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/tests',
+							template: '{module}.tests.html'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/tests',
+							template: '{module}.tests.js'
+						}
+					],
+					skin: [
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/js',
+							template: '{module}.skin.{skin}.js'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/css',
+							template: '{module}.skin.{skin}.less'
+						}
+					],
+					template: [
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}',
+							template: '{module}-{template}.html'
+						}
+					]
+				}
+			}
+
 		}
 
 	});
