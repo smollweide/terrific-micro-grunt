@@ -27,13 +27,12 @@ Installation & Requirements
 You need an Apache with PHP 5+ support and Node.js.
 
 1. Install node.js (http://nodejs.org/)
-2. Install NPM (https://www.npmjs.org/)
-3. Install Glue (http://glue.readthedocs.org/en/latest/installation.html)
-4. Unzip https://github.com/smollweide/terrific-micro-grunt/archive/master.zip in your project root
-5. Navigate into project root
-6. Run ```npm install```
-7. Run ```grunt```
-8. Start working
+2. Install Glue (http://glue.readthedocs.org/en/latest/installation.html)
+3. Install Git (http://git-scm.com/)
+4. Run ```git clone https://github.com/smollweide/terrific-micro-grunt.git ##pathToProjectRoot##```
+5. Run ```npm install```
+6. Run ```grunt```
+7. Start working
 
 Use grunt
 =========
@@ -50,8 +49,9 @@ Use grunt
 Module Generator
 ================
 
-1. Run ```sh generate-module.sh Example```
-2. The new module are created with the following structure in the "modules" folder.
+* run ```grunt terrific_modules``` for module generator help
+* run ```grunt terrific_modules:modulename``` for adding a new module
+* read the terrific-modules documentation:  https://github.com/smollweide/grunt-terrific-modules
 
 ```
 /Example
@@ -119,6 +119,7 @@ References
 - grunt-rename -> https://www.npmjs.org/package/grunt-rename
 - load-grunt-tasks -> https://github.com/sindresorhus/load-grunt-tasks
 - grunt-complexity -> https://github.com/vigetlabs/grunt-complexity
+- grunt-terrific-modules -> https://github.com/smollweide/grunt-terrific-modules
 
 License
 =======
