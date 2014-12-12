@@ -109,7 +109,7 @@ module.exports = function(grunt) {
 					],
 					output: {
 						img: '<%=dirs.cache%>/media/img/',
-						url: '<%=dirs.cache%>/media/img/',
+						url: '../media/img/',
 						less: '<%=dirs.assets%>/css/elements/'
 					}
 				}
