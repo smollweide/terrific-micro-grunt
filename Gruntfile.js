@@ -395,7 +395,7 @@ module.exports = function(grunt) {
 			},
 			gruntfile: {
 				files: 'Gruntfile.js',
-				tasks: ['build-scripts-fast', 'build-styles-fast', 'build-tests'],
+				tasks: ['build-fast'],
 				options: {
 					livereload: true
 				}
@@ -408,7 +408,7 @@ module.exports = function(grunt) {
 			},
 			triggerfile: {
 				files: ['<%=dirs.trigger%>'],
-				tasks: ['build-scripts-fast', 'build-styles-fast', 'build-tests'],
+				tasks: ['build-fast'],
 				options: {
 					livereload: true
 				}
@@ -545,6 +545,16 @@ module.exports = function(grunt) {
 							src: '<%=dirs.generator.src%>',
 							dest: '<%=dirs.generator.dest%>/{module}/tests',
 							template: '{module}.tests.js'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/dot',
+							template: 'mod.{module}.dot'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/hbs',
+							template: 'mod.{module}.hbs'
 						}
 					],
 					skin: [
@@ -564,6 +574,16 @@ module.exports = function(grunt) {
 							src: '<%=dirs.generator.src%>',
 							dest: '<%=dirs.generator.dest%>/{module}',
 							template: '{module}-{template}.html'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/dot',
+							template: 'mod.{module}-{template}.dot'
+						},
+						{
+							src: '<%=dirs.generator.src%>',
+							dest: '<%=dirs.generator.dest%>/{module}/hbs',
+							template: 'mod.{module}-{template}.hbs'
 						}
 					]
 				}
@@ -694,6 +714,16 @@ module.exports = function(grunt) {
 		'build-tests',
 		'build-dot',
 		'build-hbs',
+		'clean'
+	]);
+
+	// build fast
+	grunt.registerTask('build-fast', [
+		'build-styles-fast',
+		'build-scripts-fast',
+		'build-tests-fast',
+		'build-dot-fast',
+		'build-hbs-fast',
 		'clean'
 	]);
 
