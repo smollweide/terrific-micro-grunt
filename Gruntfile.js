@@ -177,7 +177,20 @@ module.exports = function(grunt) {
 			generator: {
 				src: '<%=dirs.resource%>/module',
 				dest: '<%=dirs.modules%>'
+			},
+
+			////////////////////////////////////////////////////////////////////////////
+			// Dot
+			dot: {
+				src: [
+					'<%=dirs.modules%>/*/dot/*.dot',
+					'<%=dirs.assets%>/dot/*.dot'
+				],
+				dest: '<%=dirs.cache%>/js/tmpl.dot.js',
+				destMin: '<%=dirs.cache%>/js/tmpl.dot.min.js'
 			}
+
+
 		},
 
 		////////////////////////////////////////////////////////////////////////////////
@@ -296,6 +309,10 @@ module.exports = function(grunt) {
 			scripts: {
 				src: ['<%=concat.scripts.dest%>'],
 				dest: '<%=dirs.cache%>/js/base.min.js'
+			},
+			dot: {
+				src: ['<%=dirs.dot.dest%>'],
+				dest: '<%=dirs.dot.destMin%>'
 			}
 		},
 
@@ -337,6 +354,13 @@ module.exports = function(grunt) {
 			styles: {
 				files: ['<%=dirs.styles%>'],
 				tasks: ['build-styles-fast'],
+				options: {
+					livereload: true
+				}
+			},
+			dot: {
+				files: ['<%=dirs.dot.src%>'],
+				tasks: ['build-dot-fast'],
 				options: {
 					livereload: true
 				}
@@ -540,6 +564,22 @@ module.exports = function(grunt) {
 			files: {
 				src: ['<%=dirs.export.dir%>/*.*']
 			}
+		},
+
+		////////////////////////////////////////////////////////////////////////////////
+		//
+		// dot compiler
+		//
+		////////////////////////////////////////////////////////////////////////////////
+		dot: {
+			dist: {
+				options: {
+					variable : 'tmpl',
+					root     : ''
+				},
+				src  : '<%=dirs.dot.src%>',
+				dest : '<%=dirs.dot.dest%>'
+			}
 		}
 
 	});
@@ -576,7 +616,16 @@ module.exports = function(grunt) {
 	]);
 	grunt.registerTask('build-scripts', [
 		'build-scripts-fast',
-		'uglify'
+		'uglify:scripts'
+	]);
+
+	// dot
+	grunt.registerTask('build-dot-fast', [
+		'dot'
+	]);
+	grunt.registerTask('build-dot', [
+		'build-dot-fast',
+		'uglify:dot'
 	]);
 
 	// tests
@@ -590,6 +639,7 @@ module.exports = function(grunt) {
 		'build-styles',
 		'build-scripts',
 		'build-tests',
+		'build-dot',
 		'clean'
 	]);
 
