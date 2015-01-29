@@ -28,6 +28,7 @@
 		"grunt-curl": "2.0.3",
 		"grunt-terrific-modules": "0.1.4",
 		"grunt-html-validation": "0.1.18",
-		"grunt-dot-compiler": "0.5.12"
+		"grunt-dot-compiler": "0.5.12",
+		"grunt-contrib-handlebars": "0.9.2"
 	}
 }

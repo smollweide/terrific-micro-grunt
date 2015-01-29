@@ -18,6 +18,8 @@
 // run "grunt export" to export the pages defined in grunt.initConfig({dirs.export.pages})
 // run "grunt w3c" for export the pages and validating them
 // run "grunt validation" for validating the exported pages
+// run "grunt dot" for compling dot templates
+// run "grunt handlebars" for compling handlebar templates
 
 module.exports = function(grunt) {
 	'use strict';
@@ -188,6 +190,17 @@ module.exports = function(grunt) {
 				],
 				dest: '<%=dirs.cache%>/js/tmpl.dot.js',
 				destMin: '<%=dirs.cache%>/js/tmpl.dot.min.js'
+			},
+
+			////////////////////////////////////////////////////////////////////////////
+			// Handlebars
+			hbs: {
+				src: [
+					'<%=dirs.modules%>/*/hbs/*.hbs',
+					'<%=dirs.assets%>/hbs/*.hbs'
+				],
+				dest: '<%=dirs.cache%>/js/tmpl.hbs.js',
+				destMin: '<%=dirs.cache%>/js/tmpl.hbs.min.js'
 			}
 
 
@@ -313,6 +326,10 @@ module.exports = function(grunt) {
 			dot: {
 				src: ['<%=dirs.dot.dest%>'],
 				dest: '<%=dirs.dot.destMin%>'
+			},
+			hbs: {
+				src: ['<%=dirs.hbs.dest%>'],
+				dest: '<%=dirs.hbs.destMin%>'
 			}
 		},
 
@@ -361,6 +378,13 @@ module.exports = function(grunt) {
 			dot: {
 				files: ['<%=dirs.dot.src%>'],
 				tasks: ['build-dot-fast'],
+				options: {
+					livereload: true
+				}
+			},
+			hbs: {
+				files: ['<%=dirs.hbs.src%>'],
+				tasks: ['build-hbs-fast'],
 				options: {
 					livereload: true
 				}
@@ -574,11 +598,31 @@ module.exports = function(grunt) {
 		dot: {
 			dist: {
 				options: {
-					variable : 'tmpl',
+					variable : 'dot',
 					root     : ''
 				},
 				src  : '<%=dirs.dot.src%>',
 				dest : '<%=dirs.dot.dest%>'
+			}
+		},
+
+		////////////////////////////////////////////////////////////////////////////////
+		//
+		// handlebars compiler
+		//
+		////////////////////////////////////////////////////////////////////////////////
+		handlebars: {
+			dist: {
+				options: {
+					/*namespace: function(filename) {
+						var parts = filename.split('/');
+
+						return parts[parts.length - 1].replace('.hbs', '');
+					},*/
+					namespace: 'hbs'
+				},
+				src  : '<%=dirs.hbs.src%>',
+				dest : '<%=dirs.hbs.dest%>'
 			}
 		}
 
@@ -628,6 +672,15 @@ module.exports = function(grunt) {
 		'uglify:dot'
 	]);
 
+	// handlebars
+	grunt.registerTask('build-hbs-fast', [
+		'handlebars'
+	]);
+	grunt.registerTask('build-hbs', [
+		'build-hbs-fast',
+		'uglify:hbs'
+	]);
+
 	// tests
 	grunt.registerTask('build-tests', [
 		'concat:testsJs',
@@ -640,6 +693,7 @@ module.exports = function(grunt) {
 		'build-scripts',
 		'build-tests',
 		'build-dot',
+		'build-hbs',
 		'clean'
 	]);
 
