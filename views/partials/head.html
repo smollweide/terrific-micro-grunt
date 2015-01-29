@@ -2,4 +2,12 @@
 <meta charset="utf-8" />
 <meta name="robots" content="noindex, nofollow" />
 
-<link rel="stylesheet" href="cache/css/base.css" type="text/css" />
+<?php
+
+if ($_GET['export'] == 'true') {
+	echo '<link rel="stylesheet" href="cache/css/base.min.css" type="text/css" />';
+} else {
+	echo '<link rel="stylesheet" href="cache/css/base.css" type="text/css" />';
+}
+
+?>

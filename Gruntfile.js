@@ -15,6 +15,9 @@
 // run "grunt search" for searching production strings (alert,console,TODO,debug,fixme) in you project
 // run "grunt yuidoc" for generating the javascript documentation
 // run "grunt complexity" for calculating the halstat and cyliomatic of you code
+// run "grunt export" to export the pages defined in grunt.initConfig({dirs.export.pages})
+// run "grunt w3c" for export the pages and validating them
+// run "grunt validation" for validating the exported pages
 
 module.exports = function(grunt) {
 	'use strict';
@@ -162,7 +165,11 @@ module.exports = function(grunt) {
 			// Export
 			export: {
 				dir: '<%=dirs.cache%>/exported',
-				param: 'export=true'
+				param: 'export=true',
+				pages: [
+					'<%=project.devUrl%>index.html?<%=dirs.export.param%>',
+					'<%=project.devUrl%>styleguide.html?<%=dirs.export.param%>'
+				]
 			},
 
 			////////////////////////////////////////////////////////////////////////////
@@ -219,10 +226,18 @@ module.exports = function(grunt) {
 		// Curl
 		//
 		////////////////////////////////////////////////////////////////////////////////
-		curl: {
-			index: {
-				src: '<%=project.devUrl%>/index.html?<%=dirs.export.param%>',
-				dest: '<%=dirs.export.dir%>/index.html'
+		'curl-dir': {
+			'export': {
+				src: [
+					'<%=dirs.export.pages%>'
+				],
+				router: function (url) {
+					return url
+						.replace(grunt.config.data.project.devUrl, '')
+						.replace('?' + grunt.config.data.dirs.export.param, '')
+					;
+				},
+				dest: '<%=dirs.export.dir%>'
 			}
 		},
 
@@ -506,6 +521,25 @@ module.exports = function(grunt) {
 				}
 			}
 
+		},
+
+		////////////////////////////////////////////////////////////////////////////////
+		//
+		// html validation
+		//
+		////////////////////////////////////////////////////////////////////////////////
+		validation: {
+			options: {
+				reset: grunt.option('reset') || false,
+				stoponerror: false,
+				remotePath: '',
+				path: '<%=dirs.gruntLog%>/validation-status.json',
+				reportpath: '<%=dirs.gruntLog%>/validation-report.json',
+				relaxerror: ['Bad value X-UA-Compatible for attribute http-equiv on element meta.'] //ignores these errors
+			},
+			files: {
+				src: ['<%=dirs.export.dir%>/*.*']
+			}
 		}
 
 	});
@@ -563,7 +597,13 @@ module.exports = function(grunt) {
 	grunt.registerTask('export', [
 		'build',
 		'copy',
-		'curl'
+		'curl-dir'
+	]);
+
+	// w3c
+	grunt.registerTask('w3c', [
+		'export',
+		'validation'
 	]);
 
 	// default
