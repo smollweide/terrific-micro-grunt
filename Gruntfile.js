@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 		project: {
 			name: 'Terrific Micro Grunt',
 			description: 'grunt version of Terrific Micro',
-			version: '0.1.0',
+			version: '0.5.0',
 			url: 'https://github.com/smollweide/terrific-micro-grunt',
 			devUrl: 'http://github.local/terrific-micro-grunt/'
 		},
@@ -90,7 +90,8 @@ module.exports = function(grunt) {
 				'<%=dirs.assets%>/js/libraries/*.js',
 				'<%=dirs.assets%>/js/plugins/*.js',
 				'<%=dirs.assets%>/js/utils/*.js',
-				'<%=dirs.modules%>/*/js/*.js'
+				'<%=dirs.modules%>/*/js/*.js',
+				'<%=dirs.assets%>/js/after/*.js'
 			],
 
 			////////////////////////////////////////////////////////////////////////////
@@ -349,9 +350,6 @@ module.exports = function(grunt) {
 		clean: {
 			less_imports: {
 				src: ['<%=dirs.cache%>/css/temp-styles-imports.less']
-			},
-			triggerfile: {
-				src: ['<%=dirs.cache%>/triggerfile']
 			}
 		},
 
@@ -408,7 +406,7 @@ module.exports = function(grunt) {
 			},
 			triggerfile: {
 				files: ['<%=dirs.trigger%>'],
-				tasks: ['build-fast'],
+				tasks: ['build-fast', 'yuidoc'],
 				options: {
 					livereload: true
 				}
@@ -586,7 +584,8 @@ module.exports = function(grunt) {
 							template: 'mod.{module}-{template}.hbs'
 						}
 					]
-				}
+				},
+				triggerFile: '<%=dirs.trigger%>'
 			}
 
 		},
@@ -634,11 +633,6 @@ module.exports = function(grunt) {
 		handlebars: {
 			dist: {
 				options: {
-					/*namespace: function(filename) {
-						var parts = filename.split('/');
-
-						return parts[parts.length - 1].replace('.hbs', '');
-					},*/
 					namespace: 'hbs'
 				},
 				src  : '<%=dirs.hbs.src%>',
@@ -706,6 +700,9 @@ module.exports = function(grunt) {
 		'concat:testsJs',
 		'concat:testsHtml'
 	]);
+	grunt.registerTask('tests', [
+		'build-tests'
+	]);
 
 	// build
 	grunt.registerTask('build', [
@@ -714,14 +711,15 @@ module.exports = function(grunt) {
 		'build-tests',
 		'build-dot',
 		'build-hbs',
-		'clean'
+		'clean',
+		'yuidoc'
 	]);
 
 	// build fast
 	grunt.registerTask('build-fast', [
 		'build-styles-fast',
 		'build-scripts-fast',
-		'build-tests-fast',
+		'build-tests',
 		'build-dot-fast',
 		'build-hbs-fast',
 		'clean'
@@ -745,4 +743,5 @@ module.exports = function(grunt) {
 		'build',
 		'watch'
 	]);
+
 };
