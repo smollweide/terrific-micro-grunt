@@ -137,9 +137,9 @@ References
 - load-grunt-tasks -> https://github.com/sindresorhus/load-grunt-tasks
 - grunt-complexity -> https://github.com/vigetlabs/grunt-complexity
 - grunt-terrific-modules -> https://github.com/smollweide/grunt-terrific-modules
-- grunt-html-validation ->
-- grunt-dot-compiler ->
-- grunt-contrib-handlebars ->
+- grunt-html-validation -> https://www.npmjs.com/package/grunt-html-validation
+- grunt-dot-compiler -> https://github.com/tinganho/grunt-dot-compiler
+- grunt-contrib-handlebars -> https://github.com/gruntjs/grunt-contrib-handlebars
 
 License
 =======
