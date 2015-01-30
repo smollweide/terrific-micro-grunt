@@ -41,13 +41,6 @@
 				$ctx = this.$ctx
 			;
 
-			console.log('Module: Footer');
-			console.log('dot templates');
-			console.dir(dot);
-			console.log('handlebar templates');
-			console.dir(hbs);
-
-
 			// set variables
 
 			// bind event handler

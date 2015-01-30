@@ -2,24 +2,34 @@ Terrific Micro Grunt
 ====================
 
 Based on "Terrific Micro" but uses "Grunt" for concatenation and minification.
-Nearly all features and the framework it self are written by someone else take a look into the caption "References".
+Nearly all features and the framework it self are written by someone else please take a look into the caption "References".
 
 THANKS TO ALL DEVELOPERS
 
 Features
 ========
-* Module Generator (shell)
+* Module Generator
 * Integrated QUnit tests (http://localhost/yourproject/cache/tests.html)
 * LESS support
 * CSS and JS concatenation
 * CSS and JS minification
+* Dot compiler
+* Handlebars compiler
 * Sprite generator with retina support
 * JsHint
 * String Search
 * Complexity calculation
 * YUIDoc JavaScript Documentation (http://localhost/yourproject/cache/jsdoc)
 * Live reload (Browser plugin required: https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+* Page exporter
+* W3C markup validator
 * Styleguide based on Bootstrap
+
+Planed
+======
+* Bower
+* Icon font generator
+* Version for Ember
 
 Installation & Requirements
 ===========================
@@ -45,6 +55,11 @@ Use grunt
 * run ```grunt search``` for searching the strings "alert, console, TODO, debug, fixme" in you project
 * run ```grunt yuidoc``` for generating the javascript documentation
 * run ```grunt complexity``` for calculating the halstead and cyclomatic of you code
+* run ```grunt export``` to export the pages defined in grunt.initConfig({dirs.export.pages})
+* run ```grunt w3c``` for export the pages and validating them
+* run ```grunt validation``` for validating the exported pages
+* run ```grunt dot``` for compling dot templates
+* run ```grunt handlebars``` for compling handlebar templates
 
 Module Generator
 ================
@@ -60,6 +75,8 @@ Module Generator
 /Example/js/example.js
 /Example/tests/example.tests.js
 /Example/tests/example.tests.html
+/Example/dot/mod.example.dot
+/Example/hbs/mod.example.hbs
 ```
 
 Creating pages
@@ -120,11 +137,14 @@ References
 - load-grunt-tasks -> https://github.com/sindresorhus/load-grunt-tasks
 - grunt-complexity -> https://github.com/vigetlabs/grunt-complexity
 - grunt-terrific-modules -> https://github.com/smollweide/grunt-terrific-modules
+- grunt-html-validation ->
+- grunt-dot-compiler ->
+- grunt-contrib-handlebars ->
 
 License
 =======
 
-Copyright (c) 2014 Simon Mollweide
+Copyright (c) 2015 Simon Mollweide
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
