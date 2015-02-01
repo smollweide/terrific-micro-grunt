@@ -24,10 +24,11 @@ Features
 * Page exporter
 * W3C markup validator
 * Styleguide based on Bootstrap
+* Bower (jquery, terrificjs, bootstrap, doT and moment installed)
 
 Planed
 ======
-* Bower
+* Static assets
 * Icon font generator
 * Version for Ember
 
@@ -37,12 +38,14 @@ Installation & Requirements
 You need an Apache with PHP 5+ support and Node.js.
 
 1. Install node.js (http://nodejs.org/)
-2. Install Glue (http://glue.readthedocs.org/en/latest/installation.html)
-3. Install Git (http://git-scm.com/)
-4. Run ```git clone https://github.com/smollweide/terrific-micro-grunt.git ##pathToProjectRoot##```
-5. Run ```npm install```
-6. Run ```grunt```
-7. Start working
+2. Install bower ```npm install -g bower``` (http://bower.io/)
+3. Install Glue (http://glue.readthedocs.org/en/latest/installation.html)
+4. Install Git (http://git-scm.com/)
+5. Run ```git clone https://github.com/smollweide/terrific-micro-grunt.git ##pathToProjectRoot##```
+6. Run ```npm install```
+7. Run ```bower install```
+8. Run ```grunt```
+9. Start working
 
 Use grunt
 =========

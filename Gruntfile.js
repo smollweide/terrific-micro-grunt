@@ -66,6 +66,7 @@ module.exports = function(grunt) {
 			// BASE
 			resource: 'resource',
 			assets: 'assets',
+			bower: 'bower_components',
 			modules: 'modules',
 			cache: 'cache',
 			tests: 'tests',
@@ -87,6 +88,11 @@ module.exports = function(grunt) {
 			////////////////////////////////////////////////////////////////////////////
 			// Scripts
 			scripts: [
+				'<%=dirs.bower%>/jquery/dist/jquery.js',
+				'<%=dirs.bower%>/terrificjs/dist/terrific.js',
+				'<%=dirs.bower%>/bootstrap/dist/js/bootstrap.js',
+				'<%=dirs.bower%>/doT/doT.js',
+				'<%=dirs.bower%>/moment/moment.js',
 				'<%=dirs.assets%>/js/libraries/*.js',
 				'<%=dirs.assets%>/js/plugins/*.js',
 				'<%=dirs.assets%>/js/utils/*.js',
@@ -98,6 +104,7 @@ module.exports = function(grunt) {
 			// Styles
 			styles: [
 				'<%=dirs.cache%>/*.less',
+				'<%=dirs.bower%>/bootstrap/dist/css/bootstrap.css',
 				'<%=dirs.assets%>/css/libraries/*.less',
 				'<%=dirs.assets%>/css/libraries/*.css',
 				'<%=dirs.assets%>/css/plugins/*.less',

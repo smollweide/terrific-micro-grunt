@@ -4,9 +4,13 @@
 *.iml
 !idea/*.iml
 .sonar/
+npm-debug.log
 
 # node
 /node_modules
+
+#bower
+/bower_components
 
 #cache
 /cache
